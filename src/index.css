@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { @apply box-border; }
+  body { @apply m-0 bg-brand-mist text-brand-ink antialiased; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+  button, input { font: inherit; }
+}
+@layer components {
+  .card { @apply rounded-2xl border border-emerald-900/5 bg-white shadow-card; }
+  .pill { @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold; }
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  /* Không in các thành phần chung của Layout */
+  .app-sidebar,
+  .app-header {
+    display: none !important;
+  }
+
+  /* Xóa khoảng trống do lg:pl-72 của Sidebar */
+  .app-shell {
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Xóa padding p-4/md:p-8 quanh nội dung */
+  .app-main {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Chỉ hiển thị bảng lịch dành cho bản in */
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .print-only table {
+    width: 100% !important;
+    table-layout: fixed;
+  }
+
+  .print-only tr,
+  .print-only td,
+  .print-only th {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+}
