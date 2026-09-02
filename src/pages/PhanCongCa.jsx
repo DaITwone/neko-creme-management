@@ -56,8 +56,8 @@ const DEFAULT_SHIFTS = [
   {
     id: "night",
     name: "Tối",
-    time: "18:00–23:00",
-    abbr: "18–23",
+    time: "18:00–22:00",
+    abbr: "18–22",
     solid: "bg-[#542B1C]",
     border: "border-[#542B1C]",
     light: "bg-[#F7EEE9]",
