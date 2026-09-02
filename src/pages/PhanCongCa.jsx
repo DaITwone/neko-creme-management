@@ -67,8 +67,8 @@ const DEFAULT_SHIFTS = [
 ];
 
 const DEFAULT_REQUIREMENTS = {
-  morning1:1,
-  afternoon:1,
+  morning1: 1,
+  afternoon: 1,
   night: 1,
   office: 0,
 };
@@ -169,7 +169,7 @@ function getAssignedShiftIds(assignments, employeeId, dateKey) {
 // Seed a couple of weeks so the "sao chép tuần trước" action has something
 // real to demonstrate on first load.
 function buildInitialAssignments() {
-  return {}
+  return {};
 }
 
 // Demo dữ liệu "lịch rảnh" mà các bạn part-time gửi tối thứ 6 cho tuần này,
@@ -271,8 +271,7 @@ export default function PhanCongCa() {
     employees.forEach((employee) => {
       counts[employee.id] = weekDateKeys.reduce(
         (total, dateKey) =>
-          total +
-          getAssignedShiftIds(assignments, employee.id, dateKey).length,
+          total + getAssignedShiftIds(assignments, employee.id, dateKey).length,
         0,
       );
     });
@@ -297,9 +296,7 @@ export default function PhanCongCa() {
     const counts = {};
     weekDateKeys.forEach((dateKey) => {
       counts[dateKey] = employees.filter((employee) =>
-        Boolean(
-          getAssignedShiftIds(assignments, employee.id, dateKey).length,
-        ),
+        Boolean(getAssignedShiftIds(assignments, employee.id, dateKey).length),
       ).length;
     });
     return counts;
@@ -310,13 +307,10 @@ export default function PhanCongCa() {
     weekDateKeys.forEach((dateKey) => {
       coverage[dateKey] = {};
       shifts.forEach((shift) => {
-        coverage[dateKey][shift.id] = employees.filter(
-          (employee) =>
-            getAssignedShiftIds(
-              assignments,
-              employee.id,
-              dateKey,
-            ).includes(shift.id),
+        coverage[dateKey][shift.id] = employees.filter((employee) =>
+          getAssignedShiftIds(assignments, employee.id, dateKey).includes(
+            shift.id,
+          ),
         ).length;
       });
     });
@@ -390,11 +384,7 @@ export default function PhanCongCa() {
   const updateCellShift = (employeeId, dateKey, shiftId, mode = "toggle") => {
     const key = cellKey(employeeId, dateKey);
     setAssignments((current) => {
-      const currentShiftIds = getAssignedShiftIds(
-        current,
-        employeeId,
-        dateKey,
-      );
+      const currentShiftIds = getAssignedShiftIds(current, employeeId, dateKey);
       let nextShiftIds = currentShiftIds;
 
       if (mode === "clear") {
@@ -534,9 +524,7 @@ export default function PhanCongCa() {
             prevDateKey,
           );
           if (prevShiftIds.length) {
-            next[cellKey(employee.id, weekDateKeys[index])] = [
-              ...prevShiftIds,
-            ];
+            next[cellKey(employee.id, weekDateKeys[index])] = [...prevShiftIds];
             copied += prevShiftIds.length;
           }
         });
@@ -695,11 +683,9 @@ export default function PhanCongCa() {
       const canWorkMorningAfterNight = (employeeId, dayIndex, shiftId) => {
         if (shiftId !== "morning" || dayIndex === 0) return true;
         const previousDateKey = weekDateKeys[dayIndex - 1];
-        return !getAssignedShiftIds(
-          next,
-          employeeId,
-          previousDateKey,
-        ).includes("night");
+        return !getAssignedShiftIds(next, employeeId, previousDateKey).includes(
+          "night",
+        );
       };
 
       const pickBest = (candidates, shiftId) =>
@@ -715,11 +701,7 @@ export default function PhanCongCa() {
 
       const assign = (employee, dateKey, shiftId) => {
         const key = cellKey(employee.id, dateKey);
-        const currentShiftIds = getAssignedShiftIds(
-          next,
-          employee.id,
-          dateKey,
-        );
+        const currentShiftIds = getAssignedShiftIds(next, employee.id, dateKey);
         next[key] = [...currentShiftIds, shiftId];
         counts[employee.id] += 1;
         if (shiftId === "night") nightCounts[employee.id] += 1;
@@ -2231,12 +2213,11 @@ export default function PhanCongCa() {
           <div className="flex items-center justify-between border-b-[5px] border-[#542B1C] pb-4">
             <div className="flex items-center gap-4">
               <div className="flex h-[72px] min-w-[150px] flex-col items-center justify-center rounded-xl border border-[#E7D2C5] bg-[#FFF9F5] px-4 text-[#542B1C]">
-                <span className="text-[20px] font-black lowercase leading-none tracking-tight">
-                  neko crème
-                </span>
-                <span className="mt-1 text-[7px] font-black uppercase tracking-[0.2em] text-[#A86545]">
-                  Ice-cream & Coffee
-                </span>
+                <img
+                  src="/logo.png"
+                  alt="Neko Crème - Ice-cream & Coffee"
+                  className="h-[72px] w-[150px] rounded-xl border border-[#E7D2C5] bg-[#FFF9F5] object-contain p-2"
+                />
               </div>
 
               <div>
@@ -2484,7 +2465,9 @@ function SummaryCard({ icon: Icon, value, label, color }) {
           <Icon size={20} />
         </span>
         <div className="min-w-0">
-          <p className="text-xl font-black text-[#542B1C] sm:text-2xl">{value}</p>
+          <p className="text-xl font-black text-[#542B1C] sm:text-2xl">
+            {value}
+          </p>
           <p className="text-[10px] font-bold uppercase leading-tight text-slate-500 sm:text-xs">
             {label}
           </p>
