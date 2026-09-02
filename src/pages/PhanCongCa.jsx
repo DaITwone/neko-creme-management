@@ -169,71 +169,13 @@ function getAssignedShiftIds(assignments, employeeId, dateKey) {
 // Seed a couple of weeks so the "sao chép tuần trước" action has something
 // real to demonstrate on first load.
 function buildInitialAssignments() {
-  const thisMonday = startOfWeek(new Date(2026, 7, 31));
-  const lastMonday = addDays(thisMonday, -7);
-  const map = {};
-
-  const seed = [
-    [1, 0, "morning"],
-    [2, 0, "morning"],
-    [3, 1, "afternoon"],
-    [4, 2, "office"],
-    [5, 0, "night"],
-    [6, 3, "afternoon"],
-    [7, 4, "morning"],
-  ];
-
-  seed.forEach(([employeeId, dayIndex, shiftId]) => {
-    map[cellKey(employeeId, formatDateKey(addDays(lastMonday, dayIndex)))] =
-      [shiftId];
-  });
-
-  map[cellKey(1, formatDateKey(thisMonday))] = ["morning", "afternoon"];
-  map[cellKey(2, formatDateKey(thisMonday))] = ["morning"];
-  map[cellKey(3, formatDateKey(addDays(thisMonday, 1)))] = ["afternoon"];
-  map[cellKey(4, formatDateKey(addDays(thisMonday, 2)))] = ["office"];
-
-  return map;
+  return {}
 }
 
 // Demo dữ liệu "lịch rảnh" mà các bạn part-time gửi tối thứ 6 cho tuần này,
 // để minh hoạ tính năng — mỗi ô là danh sách ca họ có thể làm hôm đó.
 function buildInitialAvailability() {
-  const thisMonday = startOfWeek(new Date(2026, 7, 31));
-  const map = {};
-
-  const seed = [
-    [4, 0, ["morning"]],
-    [4, 1, ["morning", "afternoon"]],
-    [4, 3, ["afternoon"]],
-    [4, 4, ["morning"]],
-    [5, 0, ["afternoon", "night"]],
-    [5, 2, ["night"]],
-    [5, 5, ["afternoon"]],
-    [6, 1, ["morning"]],
-    [6, 2, ["morning", "afternoon"]],
-    [6, 4, ["afternoon"]],
-    [6, 6, ["morning"]],
-    [7, 0, ["afternoon"]],
-    [7, 3, ["morning"]],
-    [7, 5, ["afternoon", "night"]],
-    [8, 2, ["morning"]],
-    [8, 4, ["morning", "afternoon"]],
-    [8, 6, ["afternoon"]],
-    [9, 1, ["night"]],
-    [9, 3, ["night"]],
-    [9, 5, ["night"]],
-    [10, 0, ["morning"]],
-    [10, 2, ["afternoon"]],
-    [10, 6, ["morning", "afternoon"]],
-  ];
-
-  seed.forEach(([employeeId, dayIndex, shiftIds]) => {
-    map[cellKey(employeeId, formatDateKey(addDays(thisMonday, dayIndex)))] =
-      shiftIds;
-  });
-
-  return map;
+  return {};
 }
 
 export default function PhanCongCa() {
