@@ -2216,10 +2216,9 @@ export default function PhanCongCa() {
                 <img
                   src="/logo.png"
                   alt="Neko Crème - Ice-cream & Coffee"
-                  className="h-[72px] w-[150px] rounded-xl border border-[#E7D2C5] bg-[#FFF9F5] object-contain p-2"
+                  className="h-[72px] w-[150px] rounded-xl bg-[#FFF9F5] object-contain p-2"
                 />
               </div>
-
               <div>
                 <p className="mb-1 text-[10px] font-black uppercase tracking-[0.24em] text-[#A86545]">
                   Neko Crème · Ice-cream & Coffee
