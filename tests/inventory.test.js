@@ -1,0 +1,168 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import { createSeed } from '../src/data/inventorySeed.js'
+import { allocation, expiryInfo, filterItems, inventoryItems, normalize, stockStatus, suggestedQuantity } from '../src/services/inventoryCalculations.js'
+import { applyOperation, createRepository, STORAGE_KEY } from '../src/services/inventoryRepository.js'
+import { mergeBackup, parseBackup } from '../src/services/inventoryTransfer.js'
+
+function memoryStorage() {
+  const data = new Map()
+  return { getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value) }
+}
+const fresh = () => createRepository(memoryStorage()).load()
+const itemId = 'excel-cost-3'
+const receive = (state, quantity, cost, expiryDate = '', received = '2026-09-01T08:00:00Z') => applyOperation(state, 'IMPORT', { occurredAt: received, rows: [{ itemId, quantity, unitCost: cost, expiryDate }] })
+const issue = (state, quantity, purpose = 'use') => applyOperation(state, 'EXPORT', { itemId, quantity, purpose, reason: 'Test', occurredAt: '2026-09-10T08:00:00Z' })
+const stock = state => inventoryItems(state).find(i => i.id === itemId)
+
+test('84 source rows, exact budget, zero actual stock, independent categories/suppliers', () => {
+  const seed = createSeed()
+  assert.equal(seed.length, 84)
+  assert.equal(seed.reduce((s, i) => s + i.unitPrice * i.monthlyTargetQty, 0), 66976000)
+  assert.equal(new Set(seed.map(i => i.id)).size, 84)
+  assert.equal(new Set(seed.map(i => i.sku)).size, 84)
+  assert.ok(seed.every(i => i.currentStock === 0))
+  assert.equal(seed.find(i => i.name === 'Trà đen').supplier, 'GLOFOOD')
+  assert.equal(seed.find(i => i.name === 'Trà đen').category, 'Trà và bột pha chế')
+  assert.equal(stock(fresh()).inventoryValue, 0)
+})
+test('FEFO then FIFO; partial and multiple-batch issues use actual batch costs', () => {
+  let state = receive(fresh(), 4, 100, '', '2026-08-01T00:00:00Z')
+  state = receive(state, 3, 200, '2026-10-01')
+  state = receive(state, 2, 300, '2026-09-15')
+  assert.equal(stock(state).currentStock, 9)
+  assert.equal(stock(state).inventoryValue, 1600)
+  assert.deepEqual(allocation(state.batches, itemId, 6).map(b => b.quantity), [2, 3, 1])
+  const partial = issue(state, 1)
+  assert.equal(partial.batches[2].remainingQuantity, 1)
+  state = issue(state, 6)
+  assert.equal(stock(state).currentStock, 3)
+  assert.equal(stock(state).inventoryValue, 300)
+  assert.deepEqual(state.transactions.slice(-3).map(t => [t.stockBefore, t.stockAfter]), [[9, 7], [7, 4], [4, 3]])
+  assert.throws(() => issue(state, 4), /vượt tồn/)
+  assert.equal(stock(state).currentStock, 3)
+  let fifo = receive(fresh(), 2, 10, '', '2026-08-02T00:00:00Z')
+  fifo = receive(fifo, 2, 20, '', '2026-08-01T00:00:00Z')
+  assert.equal(allocation(fifo.batches, itemId, 1)[0].unitCost, 20)
+})
+test('expiry boundaries include today, 7 and 30 days', () => {
+  const today = '2026-09-10'
+  for (const [date, status, days] of [['2026-09-09', 'EXPIRED', -1], ['2026-09-10', 'EXPIRING_SOON', 0], ['2026-09-17', 'EXPIRING_SOON', 7], ['2026-09-18', 'EXPIRING_30_DAYS', 8], ['2026-10-10', 'EXPIRING_30_DAYS', 30], ['2026-10-11', 'SAFE', 31], ['', 'NO_EXPIRY', null]]) assert.deepEqual(expiryInfo(date, today), { status, days })
+})
+test('negative, NaN, empty, zero imports, prices, bad dates rejected atomically', () => {
+  const state = fresh()
+  for (const q of [-1, NaN, '', Infinity, 0]) assert.throws(() => receive(state, q, 1))
+  assert.throws(() => receive(state, 1, -1))
+  assert.throws(() => applyOperation(state, 'IMPORT', { occurredAt: '2026-09-10', rows: [{ itemId, quantity: 1, unitCost: 1 }, { itemId, quantity: 1, unitCost: 1, manufactureDate: '2026-10-01', expiryDate: '2026-09-01' }] }))
+  assert.equal(state.batches.length, 0)
+})
+test('count draft, confirm increase/decrease, no change, no duplicate confirmation', () => {
+  let state = receive(fresh(), 5, 100)
+  state = applyOperation(state, 'COUNT', { rows: [{ itemId, actualQuantity: 8, reason: 'Đếm lại' }], confirmed: false })
+  assert.equal(stock(state).currentStock, 5)
+  const draft = state.counts[0]
+  state = applyOperation(state, 'COUNT', { rows: [{ ...draft, actualQuantity: 8 }], confirmed: true })
+  assert.equal(stock(state).currentStock, 8)
+  assert.equal(state.counts[0].differenceValue, 300)
+  assert.equal(state.transactions.at(-2).type, 'ADJUST_IN')
+  assert.throws(() => applyOperation(state, 'COUNT', { rows: [draft], confirmed: true }))
+  state = applyOperation(state, 'COUNT', { rows: [{ itemId, actualQuantity: 2 }], confirmed: true })
+  assert.equal(stock(state).currentStock, 2)
+  assert.equal(state.transactions.at(-2).type, 'ADJUST_OUT')
+  assert.equal(state.counts.at(-1).differenceValue, -600)
+  const before = state.transactions.length
+  state = applyOperation(state, 'COUNT', { rows: [{ itemId, actualQuantity: 2 }], confirmed: true })
+  assert.equal(state.transactions.length, before + 1)
+  assert.equal(state.transactions.at(-1).type, 'COUNT')
+})
+test('remove expiry retains batch, quantities and immutable transaction history', () => {
+  const previous = receive(fresh(), 4, 200, '2026-09-01')
+  const next = applyOperation(previous, 'EXPIRY', { batchId: previous.batches[0].id, expiryDate: '', reason: 'Nhập nhầm' })
+  assert.equal(next.batches.length, 1)
+  assert.equal(next.batches[0].remainingQuantity, 4)
+  assert.equal(next.batches[0].expiryDate, '')
+  assert.deepEqual(next.transactions, previous.transactions)
+  assert.equal(next.audit[0].stockBefore, 4)
+  assert.ok(previous.batches[0].expiryDate)
+})
+test('Vietnamese search, combined filters and entire category', () => {
+  const items = inventoryItems(fresh())
+  assert.equal(normalize('ĐƯỜNG SỮA'), 'duong sua')
+  assert.ok(filterItems(items, { search: 'tra lai' }).some(i => i.name === 'Trà Lài'))
+  assert.equal(filterItems(items, { category: 'Kem', status: 'OUT_OF_STOCK' }).length, 10)
+  assert.equal(filterItems(items, { category: 'Kem', status: 'NORMAL' }).length, 0)
+  assert.equal(stockStatus({ currentStock: 2, reorderPoint: 2 }), 'LOW_STOCK')
+  assert.equal(stockStatus({ currentStock: 3, reorderPoint: 2 }), 'NORMAL')
+  assert.equal(suggestedQuantity({ currentStock: 3, monthlyTargetQty: 10, reorderPoint: 4 }), 7)
+})
+test('save/reload keeps transactions, no reseed, stale tab and quota errors do not overwrite', () => {
+  const storage = memoryStorage()
+  const repo = createRepository(storage)
+  let state = repo.load()
+  const stale = createRepository(storage); stale.load()
+  state = receive(state, 2, 100)
+  repo.save(state)
+  const reload = createRepository(storage).load()
+  assert.deepEqual(reload, state)
+  assert.throws(() => stale.save(fresh()), /tab khác/)
+  const raw = storage.getItem(STORAGE_KEY)
+  storage.setItem = () => { throw new Error('Quota exceeded') }
+  assert.throws(() => repo.save(issue(state, 1)), /Quota/)
+  assert.equal(storage.getItem(STORAGE_KEY), raw)
+})
+test('corrupt and incomplete legacy storage are preserved', () => {
+  const storage = memoryStorage(); storage.setItem(STORAGE_KEY, '{invalid')
+  assert.throws(() => createRepository(storage).load())
+  assert.equal(storage.getItem(STORAGE_KEY), '{invalid')
+  const legacy = memoryStorage(); legacy.setItem('my-store.inventory.items.v1', '[]')
+  assert.throws(() => createRepository(legacy).load(), /thiếu/)
+  assert.equal(legacy.getItem(STORAGE_KEY), null)
+})
+test('backup round-trip and merge refuse conflicting historical records', () => {
+  const source = receive(fresh(), 3, 100)
+  const restored = mergeBackup(fresh(), parseBackup(JSON.stringify(source)))
+  assert.equal(stock(restored).currentStock, 3)
+  const changed = issue(source, 1)
+  assert.throws(() => mergeBackup(restored, changed), /Xung đột/)
+})
+test('discard, supplier return, plans and stock tracking rules', () => {
+  let state = receive(fresh(), 5, 100)
+  state = issue(state, 1, 'expired'); assert.equal(state.transactions.at(-1).type, 'DISCARD')
+  state = issue(state, 1, 'supplier'); assert.equal(state.transactions.at(-1).type, 'RETURN')
+  assert.throws(() => applyOperation(state, 'ACTIVE', { itemId }), /hết tồn/)
+  state = applyOperation(state, 'PLAN', { rows: [{ itemId, quantity: 2 }] })
+  assert.equal(stock(state).currentStock, 3)
+  assert.equal(state.plans.length, 1)
+  const payload = { planId: state.plans[0].id, rows: [{ itemId, quantity: 2, unitCost: 100 }], occurredAt: '2026-09-10T00:00:00Z' }
+  state = applyOperation(state, 'IMPORT', payload)
+  assert.equal(state.plans[0].status, 'RECEIVED')
+  assert.throws(() => applyOperation(state, 'IMPORT', payload), /đã được nhập/)
+})
+test('delete draft plan persists without changing stock; received plans cannot be deleted', () => {
+  const storage = memoryStorage()
+  const repo = createRepository(storage)
+  let state = receive(repo.load(), 3, 100)
+  state = applyOperation(state, 'PLAN', { rows: [{ itemId, quantity: 2 }] })
+  state = applyOperation(state, 'PLAN', { rows: [{ itemId, quantity: 4 }] })
+  const planId = state.plans[0].id
+  const next = applyOperation(state, 'DELETE_PLAN', { planId })
+  assert.equal(next.plans.length, 1)
+  assert.equal(next.plans[0].id, state.plans[1].id)
+  assert.deepEqual(next.batches, state.batches)
+  assert.deepEqual(next.transactions, state.transactions)
+  assert.equal(state.plans.length, 2)
+  repo.save(next)
+  assert.deepEqual(createRepository(storage).load().plans, next.plans)
+  assert.throws(() => applyOperation(next, 'DELETE_PLAN', { planId }), /không còn tồn tại/)
+  const received = applyOperation(next, 'IMPORT', { planId: next.plans[0].id, rows: [{ itemId, quantity: 4, unitCost: 100 }], occurredAt: '2026-09-10T00:00:00Z' })
+  assert.throws(() => applyOperation(received, 'DELETE_PLAN', { planId: received.plans[0].id }), /còn nháp/)
+})
+test('backup rejects malformed plans, dates and numeric strings', () => {
+  const bad = receive(fresh(), 1, 100)
+  bad.batches[0].remainingQuantity = '1'
+  assert.throws(() => parseBackup(JSON.stringify(bad)), /số hữu hạn/)
+  assert.throws(() => receive(fresh(), 1, 100, '2026-02-30'), /không tồn tại/)
+  const invalidPlan = fresh()
+  invalidPlan.plans.push({ id: 'bad', createdAt: '2026-09-10T00:00:00Z', status: 'DRAFT', rows: [{ itemId: 'missing', quantity: 2 }] })
+  assert.throws(() => parseBackup(JSON.stringify(invalidPlan)), /không tồn tại/)
+})

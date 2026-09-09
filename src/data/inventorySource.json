@@ -1,0 +1,842 @@
+[
+    {
+        "row":  3,
+        "sourceGroup":  "Kem",
+        "name":  "Vani",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  656000
+    },
+    {
+        "row":  4,
+        "sourceGroup":  "Kem",
+        "name":  "Blueberry",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  656000
+    },
+    {
+        "row":  5,
+        "sourceGroup":  "Kem",
+        "name":  "Strawberry",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  656000
+    },
+    {
+        "row":  6,
+        "sourceGroup":  "Kem",
+        "name":  "Coconut",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  656000
+    },
+    {
+        "row":  7,
+        "sourceGroup":  "Kem",
+        "name":  "Taro",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  656000
+    },
+    {
+        "row":  8,
+        "sourceGroup":  "Kem",
+        "name":  "Durian",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  328000
+    },
+    {
+        "row":  9,
+        "sourceGroup":  "Kem",
+        "name":  "Matcha",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  656000
+    },
+    {
+        "row":  10,
+        "sourceGroup":  "Kem",
+        "name":  "Rum",
+        "brand":  "Cremo",
+        "packSize":  "6L",
+        "unitPrice":  328000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  328000
+    },
+    {
+        "row":  11,
+        "sourceGroup":  "Kem",
+        "name":  "Chocolate",
+        "brand":  "New Zealand",
+        "packSize":  "5.5L",
+        "unitPrice":  819000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  1638000
+    },
+    {
+        "row":  12,
+        "sourceGroup":  "Kem",
+        "name":  "Cookies \u0026 Cream",
+        "brand":  "New Zealand",
+        "packSize":  "5.5L",
+        "unitPrice":  819000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  1638000
+    },
+    {
+        "row":  13,
+        "sourceGroup":  "GLOFOOD",
+        "name":  "Trà đen",
+        "brand":  "Glofood",
+        "packSize":  "1kg",
+        "unitPrice":  147000,
+        "monthlyTargetQty":  3,
+        "sourceTotal":  441000
+    },
+    {
+        "row":  14,
+        "sourceGroup":  "GLOFOOD",
+        "name":  "Đường bắp",
+        "brand":  "Glofood",
+        "packSize":  "6kg",
+        "unitPrice":  536000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  1072000
+    },
+    {
+        "row":  15,
+        "sourceGroup":  "GLOFOOD",
+        "name":  "Bột béo",
+        "brand":  "Glofood",
+        "packSize":  "1kg",
+        "unitPrice":  93000,
+        "monthlyTargetQty":  3,
+        "sourceTotal":  279000
+    },
+    {
+        "row":  16,
+        "sourceGroup":  "GLOFOOD",
+        "name":  "Cacao",
+        "brand":  "Glofood",
+        "packSize":  "1kg",
+        "unitPrice":  360000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  180000
+    },
+    {
+        "row":  17,
+        "sourceGroup":  "GLOFOOD",
+        "name":  "Trân châu",
+        "brand":  "Glofood",
+        "packSize":  "2kg",
+        "unitPrice":  318000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  318000
+    },
+    {
+        "row":  18,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Trà hương đào",
+        "brand":  "Cozy",
+        "packSize":  "50gr",
+        "unitPrice":  35000,
+        "monthlyTargetQty":  5,
+        "sourceTotal":  175000
+    },
+    {
+        "row":  19,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Trà Lài",
+        "brand":  "Hoàng Gia",
+        "packSize":  "1kg",
+        "unitPrice":  178000,
+        "monthlyTargetQty":  3,
+        "sourceTotal":  534000
+    },
+    {
+        "row":  20,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Chanh vàng",
+        "brand":  "Monin",
+        "packSize":  "700ml",
+        "unitPrice":  225000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  225000
+    },
+    {
+        "row":  21,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Elder Flower",
+        "brand":  "Monin",
+        "packSize":  "700ml",
+        "unitPrice":  225000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  225000
+    },
+    {
+        "row":  22,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Dưa hấu",
+        "brand":  "Monin",
+        "packSize":  "700ml",
+        "unitPrice":  225000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  450000
+    },
+    {
+        "row":  23,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Hazelnut",
+        "brand":  "Monin",
+        "packSize":  "700ml",
+        "unitPrice":  225000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  112500
+    },
+    {
+        "row":  24,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Đào",
+        "brand":  "Davinci",
+        "packSize":  "750ml",
+        "unitPrice":  198000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  396000
+    },
+    {
+        "row":  25,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Chanh dây",
+        "brand":  "Davinci",
+        "packSize":  "750ml",
+        "unitPrice":  198000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  198000
+    },
+    {
+        "row":  26,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Syrup Bạc hà",
+        "brand":  "Torani",
+        "packSize":  "750ml",
+        "unitPrice":  185000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  92500
+    },
+    {
+        "row":  27,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sốt Caramel",
+        "brand":  "Golden Farm",
+        "packSize":  "630gr",
+        "unitPrice":  62000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  62000
+    },
+    {
+        "row":  28,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sốt Socola",
+        "brand":  "Golden Farm",
+        "packSize":  "630gr",
+        "unitPrice":  65000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  32500
+    },
+    {
+        "row":  29,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sinh tố Chanh dây",
+        "brand":  "Golden Farm",
+        "packSize":  "1L",
+        "unitPrice":  108000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  108000
+    },
+    {
+        "row":  30,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sinh tố Dâu",
+        "brand":  "Berrino",
+        "packSize":  "1L",
+        "unitPrice":  91000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  91000
+    },
+    {
+        "row":  31,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sinh tố Xoài",
+        "brand":  "Berrino",
+        "packSize":  "1L",
+        "unitPrice":  88000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  88000
+    },
+    {
+        "row":  32,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sinh tố Việt quất",
+        "brand":  "Boduo",
+        "packSize":  "1.36kg",
+        "unitPrice":  145000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  145000
+    },
+    {
+        "row":  33,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Sinh tố Dưa lưới",
+        "brand":  "Boduo",
+        "packSize":  "1.36kg",
+        "unitPrice":  145000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  145000
+    },
+    {
+        "row":  34,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Đào ngâm",
+        "brand":  "Baan Mai",
+        "packSize":  "820gr",
+        "unitPrice":  52000,
+        "monthlyTargetQty":  5,
+        "sourceTotal":  260000
+    },
+    {
+        "row":  35,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Hạt thủy tinh",
+        "brand":  "Hùng Chương",
+        "packSize":  "1kg",
+        "unitPrice":  68000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  68000
+    },
+    {
+        "row":  36,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Cốm 5 màu",
+        "brand":  "Premier Win",
+        "packSize":  "500gr",
+        "unitPrice":  90000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  45000
+    },
+    {
+        "row":  37,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Muối hồng",
+        "brand":  "Am QAISAR",
+        "packSize":  "150gr",
+        "unitPrice":  25000,
+        "monthlyTargetQty":  0.3,
+        "sourceTotal":  7500
+    },
+    {
+        "row":  38,
+        "sourceGroup":  "PHACHEVIET",
+        "name":  "Chocochip",
+        "brand":  "GloFood",
+        "packSize":  "1kg",
+        "unitPrice":  140000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  70000
+    },
+    {
+        "row":  39,
+        "sourceGroup":  "CÀ PHÊ",
+        "name":  "Robusta",
+        "brand":  "Lecomte",
+        "packSize":  "1kg",
+        "unitPrice":  315000,
+        "monthlyTargetQty":  16,
+        "sourceTotal":  5040000
+    },
+    {
+        "row":  40,
+        "sourceGroup":  "CÀ PHÊ",
+        "name":  "Arabica",
+        "brand":  "Stupid Duck",
+        "packSize":  "1kg",
+        "unitPrice":  586000,
+        "monthlyTargetQty":  5,
+        "sourceTotal":  2930000
+    },
+    {
+        "row":  41,
+        "sourceGroup":  "SỮA",
+        "name":  "Sữa tươi",
+        "brand":  "Mlekovita",
+        "packSize":  "12L",
+        "unitPrice":  336000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  672000
+    },
+    {
+        "row":  42,
+        "sourceGroup":  "SỮA",
+        "name":  "Sữa hạt",
+        "brand":  "Oatside",
+        "packSize":  "6L",
+        "unitPrice":  270000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  540000
+    },
+    {
+        "row":  43,
+        "sourceGroup":  "SỮA",
+        "name":  "Sữa đặc",
+        "brand":  "Vinamilk",
+        "packSize":  "1.284kg",
+        "unitPrice":  68000,
+        "monthlyTargetQty":  30,
+        "sourceTotal":  2040000
+    },
+    {
+        "row":  44,
+        "sourceGroup":  "SỮA",
+        "name":  "Sữa bịch",
+        "brand":  "Vinamilk",
+        "packSize":  "220ml",
+        "unitPrice":  7000,
+        "monthlyTargetQty":  48,
+        "sourceTotal":  336000
+    },
+    {
+        "row":  45,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Cam",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  15000,
+        "monthlyTargetQty":  22,
+        "sourceTotal":  330000
+    },
+    {
+        "row":  46,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Ổi",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  15000,
+        "monthlyTargetQty":  14,
+        "sourceTotal":  210000
+    },
+    {
+        "row":  47,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Cà rốt",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  20000,
+        "monthlyTargetQty":  7,
+        "sourceTotal":  140000
+    },
+    {
+        "row":  48,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Dưa hấu",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  20000,
+        "monthlyTargetQty":  17,
+        "sourceTotal":  340000
+    },
+    {
+        "row":  49,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Xoài",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  15000,
+        "monthlyTargetQty":  3,
+        "sourceTotal":  45000
+    },
+    {
+        "row":  50,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Dâu",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  100000,
+        "monthlyTargetQty":  4,
+        "sourceTotal":  400000
+    },
+    {
+        "row":  51,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Thơm",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  15000,
+        "monthlyTargetQty":  8,
+        "sourceTotal":  120000
+    },
+    {
+        "row":  52,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Tắc",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  20000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  10000
+    },
+    {
+        "row":  53,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Bơ",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  50000,
+        "monthlyTargetQty":  12,
+        "sourceTotal":  600000
+    },
+    {
+        "row":  54,
+        "sourceGroup":  "TRÁI CÂY",
+        "name":  "Dừa",
+        "brand":  "Market",
+        "packSize":  "1 trái",
+        "unitPrice":  15000,
+        "monthlyTargetQty":  40,
+        "sourceTotal":  600000
+    },
+    {
+        "row":  55,
+        "sourceGroup":  "NHẤT HƯƠNG",
+        "name":  "Matcha Nhật",
+        "brand":  "Uji Ceremonial",
+        "packSize":  "1kg",
+        "unitPrice":  1360000,
+        "monthlyTargetQty":  0.35,
+        "sourceTotal":  475999.99999999994
+    },
+    {
+        "row":  56,
+        "sourceGroup":  "NHẤT HƯƠNG",
+        "name":  "Bột rau câu",
+        "brand":  "Hoàng Yến",
+        "packSize":  "1 bịch",
+        "unitPrice":  7000,
+        "monthlyTargetQty":  20,
+        "sourceTotal":  140000
+    },
+    {
+        "row":  57,
+        "sourceGroup":  "NHẤT HƯƠNG",
+        "name":  "Đường ăn kiêng",
+        "brand":  "Biên Hòa",
+        "packSize":  "1 hộp (250gr)",
+        "unitPrice":  69000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  69000
+    },
+    {
+        "row":  58,
+        "sourceGroup":  "NHẤT HƯƠNG",
+        "name":  "Marshmallow",
+        "brand":  "Corniche",
+        "packSize":  "1 bịch",
+        "unitPrice":  19000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  19000
+    },
+    {
+        "row":  59,
+        "sourceGroup":  "KAMEREO",
+        "name":  "Kem béo",
+        "brand":  "Ice Hot",
+        "packSize":  "454gr",
+        "unitPrice":  32000,
+        "monthlyTargetQty":  6,
+        "sourceTotal":  192000
+    },
+    {
+        "row":  60,
+        "sourceGroup":  "KAMEREO",
+        "name":  "Cốt dừa",
+        "brand":  "Wonder Farm",
+        "packSize":  "400ml",
+        "unitPrice":  32000,
+        "monthlyTargetQty":  6,
+        "sourceTotal":  192000
+    },
+    {
+        "row":  61,
+        "sourceGroup":  "KAMEREO",
+        "name":  "Soda",
+        "brand":  "Schweppes",
+        "packSize":  "320ml",
+        "unitPrice":  6000,
+        "monthlyTargetQty":  12,
+        "sourceTotal":  72000
+    },
+    {
+        "row":  62,
+        "sourceGroup":  "KAMEREO",
+        "name":  "Giấy vệ sinh",
+        "brand":  "An An",
+        "packSize":  "1 gói (10 cuộn)",
+        "unitPrice":  70000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  70000
+    },
+    {
+        "row":  63,
+        "sourceGroup":  "SONG NGUYÊN",
+        "name":  "Tô giấy kem",
+        "brand":  "Song Nguyên",
+        "packSize":  "1 Ly",
+        "unitPrice":  1350,
+        "monthlyTargetQty":  300,
+        "sourceTotal":  405000
+    },
+    {
+        "row":  64,
+        "sourceGroup":  "SONG NGUYÊN",
+        "name":  "Ly giấy 280ml",
+        "brand":  "Song Nguyên",
+        "packSize":  "1 Ly",
+        "unitPrice":  1590,
+        "monthlyTargetQty":  150,
+        "sourceTotal":  238500
+    },
+    {
+        "row":  65,
+        "sourceGroup":  "SONG NGUYÊN",
+        "name":  "Ly Giấy 450ml",
+        "brand":  "Song Nguyên",
+        "packSize":  "1 Ly",
+        "unitPrice":  2100,
+        "monthlyTargetQty":  300,
+        "sourceTotal":  630000
+    },
+    {
+        "row":  66,
+        "sourceGroup":  "SONG NGUYÊN",
+        "name":  "Nắp nhựa nhỏ",
+        "brand":  "Song Nguyên",
+        "packSize":  "1 Nắp",
+        "unitPrice":  250,
+        "monthlyTargetQty":  500,
+        "sourceTotal":  125000
+    },
+    {
+        "row":  67,
+        "sourceGroup":  "SONG NGUYÊN",
+        "name":  "Nắp nóng",
+        "brand":  "Song Nguyên",
+        "packSize":  "1 Nắp",
+        "unitPrice":  310,
+        "monthlyTargetQty":  150,
+        "sourceTotal":  46500
+    },
+    {
+        "row":  68,
+        "sourceGroup":  "HOA ĐĂNG",
+        "name":  "Ly nhựa 500ml",
+        "brand":  "Hoa Đăng",
+        "packSize":  "1 Ly",
+        "unitPrice":  875,
+        "monthlyTargetQty":  1200,
+        "sourceTotal":  1050000
+    },
+    {
+        "row":  69,
+        "sourceGroup":  "HOA ĐĂNG",
+        "name":  "Nắp nhựa Lớn",
+        "brand":  "Hoa Đăng",
+        "packSize":  "1 Nắp",
+        "unitPrice":  245,
+        "monthlyTargetQty":  1200,
+        "sourceTotal":  294000
+    },
+    {
+        "row":  70,
+        "sourceGroup":  "KHÁC",
+        "name":  "Túi 1 ly",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  60000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  60000
+    },
+    {
+        "row":  71,
+        "sourceGroup":  "KHÁC",
+        "name":  "Túi 2 ly",
+        "brand":  "Market",
+        "packSize":  "1kg",
+        "unitPrice":  55000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  55000
+    },
+    {
+        "row":  72,
+        "sourceGroup":  "KHÁC",
+        "name":  "Muỗng nhựa lớn",
+        "brand":  "Shopee",
+        "packSize":  "1 cái",
+        "unitPrice":  200,
+        "monthlyTargetQty":  1500,
+        "sourceTotal":  300000
+    },
+    {
+        "row":  73,
+        "sourceGroup":  "KHÁC",
+        "name":  "Ống hút nhựa nhỏ (Phi 6)",
+        "brand":  "TQT",
+        "packSize":  "1 bịch",
+        "unitPrice":  30000,
+        "monthlyTargetQty":  6,
+        "sourceTotal":  180000
+    },
+    {
+        "row":  74,
+        "sourceGroup":  "KHÁC",
+        "name":  "Ống hút nhựa lớn (Phi 12)",
+        "brand":  "TQT",
+        "packSize":  "1 bịch",
+        "unitPrice":  30000,
+        "monthlyTargetQty":  3,
+        "sourceTotal":  90000
+    },
+    {
+        "row":  75,
+        "sourceGroup":  "KHÁC",
+        "name":  "Hũ nhựa rau câu",
+        "brand":  "Market",
+        "packSize":  "1 hũ",
+        "unitPrice":  480,
+        "monthlyTargetQty":  500,
+        "sourceTotal":  240000
+    },
+    {
+        "row":  76,
+        "sourceGroup":  "KHÁC",
+        "name":  "Sữa chua",
+        "brand":  "Đà Lạt",
+        "packSize":  "1 hũ",
+        "unitPrice":  7200,
+        "monthlyTargetQty":  350,
+        "sourceTotal":  2520000
+    },
+    {
+        "row":  77,
+        "sourceGroup":  "KHÁC",
+        "name":  "Trứng gà làm bánh",
+        "brand":  "Market",
+        "packSize":  "1 trứng",
+        "unitPrice":  2700,
+        "monthlyTargetQty":  80,
+        "sourceTotal":  216000
+    },
+    {
+        "row":  78,
+        "sourceGroup":  "KHÁC",
+        "name":  "Muỗng gỗ ăn kem",
+        "brand":  "Shopee",
+        "packSize":  "1 bịch (30 cái)",
+        "unitPrice":  15000,
+        "monthlyTargetQty":  10,
+        "sourceTotal":  150000
+    },
+    {
+        "row":  79,
+        "sourceGroup":  "KHÁC",
+        "name":  "Nước rửa chén",
+        "brand":  "Shopee",
+        "packSize":  "1.5L",
+        "unitPrice":  68000,
+        "monthlyTargetQty":  5,
+        "sourceTotal":  340000
+    },
+    {
+        "row":  80,
+        "sourceGroup":  "KHÁC",
+        "name":  "Nước rửa tay",
+        "brand":  "TM Care",
+        "packSize":  "4L",
+        "unitPrice":  250000,
+        "monthlyTargetQty":  0.5,
+        "sourceTotal":  125000
+    },
+    {
+        "row":  81,
+        "sourceGroup":  "KHÁC",
+        "name":  "Muỗng nhựa nhỏ ăn snack",
+        "brand":  "Shopee",
+        "packSize":  "1 bịch (100 cái)",
+        "unitPrice":  12000,
+        "monthlyTargetQty":  10,
+        "sourceTotal":  120000
+    },
+    {
+        "row":  82,
+        "sourceGroup":  "KHÁC",
+        "name":  "Bao đựng rác",
+        "brand":  "Shopee",
+        "packSize":  "1kg",
+        "unitPrice":  35000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  70000
+    },
+    {
+        "row":  83,
+        "sourceGroup":  "KHÁC",
+        "name":  "Nước suối Aquafina",
+        "brand":  "Market",
+        "packSize":  "1 thùng (24 chai)",
+        "unitPrice":  100000,
+        "monthlyTargetQty":  2,
+        "sourceTotal":  200000
+    },
+    {
+        "row":  84,
+        "sourceGroup":  "KHÁC",
+        "name":  "Giấy ăn",
+        "brand":  "Shopee",
+        "packSize":  "1 thùng (30 gói)",
+        "unitPrice":  100000,
+        "monthlyTargetQty":  1,
+        "sourceTotal":  100000
+    },
+    {
+        "row":  85,
+        "sourceGroup":  "KHÁC",
+        "name":  "Bánh ốc quế",
+        "brand":  "Shopee",
+        "packSize":  "10 cái",
+        "unitPrice":  50000,
+        "monthlyTargetQty":  3,
+        "sourceTotal":  150000
+    },
+    {
+        "row":  86,
+        "sourceGroup":  "KHÁC",
+        "name":  "Hợp tác đồ ăn",
+        "brand":  "HL \u0026 Phở",
+        "packSize":  "Phần",
+        "unitPrice":  50000,
+        "monthlyTargetQty":  600,
+        "sourceTotal":  30000000
+    }
+]
