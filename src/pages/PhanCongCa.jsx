@@ -45,8 +45,8 @@ const DEFAULT_SHIFTS = [
   {
     id: "afternoon",
     name: "Chiều",
-    time: "14:00-19:00",
-    abbr: "14:00–19:00",
+    time: "13:30–19:00",
+    abbr: "13:30–19:00",
     solid: "bg-[#DF8581]",
     border: "border-[#DF8581]",
     light: "bg-[#FFF0F0]",
@@ -56,8 +56,8 @@ const DEFAULT_SHIFTS = [
   {
     id: "night",
     name: "Tối",
-    time: "18:00–22:00",
-    abbr: "18–22",
+    time: "18:30–23:00",
+    abbr: "18:30–23:00",
     solid: "bg-[#542B1C]",
     border: "border-[#542B1C]",
     light: "bg-[#F7EEE9]",
