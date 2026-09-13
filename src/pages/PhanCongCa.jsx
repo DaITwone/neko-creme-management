@@ -125,6 +125,8 @@ const initialEmployees = [
   { id: 2, name: "Nhi", type: "parttime" },
   { id: 3, name: "Trâm", type: "parttime" },
   { id: 4, name: "Trúc", type: "parttime" },
+  { id: 5, name: "Cô Thảo", type: "parttime" },
+  { id: 6, name: "Bình", type: "parttime" },
 ];
 
 function formatDateKey(date) {
