@@ -122,7 +122,6 @@ const EMPLOYEE_TYPES = {
 };
 
 const initialEmployees = [
-  { id: 1, name: "Du", type: "parttime" },
   { id: 2, name: "Nhi", type: "parttime" },
   { id: 3, name: "Trâm", type: "parttime" },
   { id: 4, name: "Trúc", type: "parttime" },
